@@ -16,7 +16,7 @@
 9. Follow the instructions provided by the output of the above step. It will ask to run `ssh -o ' IdentityFile <new-private-key-location>' '<user>@<vm-public-ip>'` \
    Example: `ssh -o ' IdentityFile ~/.ssh/demo_key.pem' 'azureuser@1.2.3.4'`
 10. Try exiting the session by `Ctrl + D` and re-login using `ssh <user>@<vm-public-ip>` \
-    Example: `ssh azureuser@4.227.192.117`
+    Example: `ssh azureuser@4.3.2.1`
 11. Done! You should be able to login without having to mention any private key from now on
 
 ## References
