@@ -1,0 +1,4 @@
+ansible -i inventory.ini -m shell -a "sudo ls /etc" all
+ansible -i inventory.ini -m shell -a "sudo apt install curl" all
+ansible -i inventory.ini -m shell -a "sudo dpkg -l" all
+ansible -i inventory.ini -m shell -a "sudo dpkg -l | grep -i python" all
