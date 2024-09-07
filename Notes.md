@@ -18,7 +18,7 @@ ubuntu@1.1.1.1
 ubuntu@2.2.2.2
 
 [azureServers]
-azureuser@@8.9.0.1
+azureuser@8.9.0.1
 ```
 
 9. If you don't want to repeatedly add the inventory file in the commands keep the inventory file in _/etc/ansible/hosts_ path. If the path doesn't exist, you can create it.
