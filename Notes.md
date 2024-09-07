@@ -22,4 +22,8 @@ azureuser@8.9.0.1
 ```
 
 9. If you don't want to repeatedly add the inventory file in the commands keep the inventory file in _/etc/ansible/hosts_ path. If the path doesn't exist, you can create it.
-10. 
+10. Playbook consists plays. Plays consist of hosts, user & tasks (one or more). Tasks consist of list of modules.
+11. The field `become: true` helps ansible playbook run with root user.
+12. The field `state: present` means install. The field `state: absent` means uninstall.
+13. The first task every ansible play will run is **gather facts** where it would try to check if it can connect to the managed hosts or not.
+14. 
