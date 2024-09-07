@@ -9,7 +9,7 @@
 ## Steps
 
 1. Open the WSL shell and navigate to the directory **2_ansiblePlaybook**
-2. Ensure that you have set passwordless authentication as mentioned in the previous guide.
+2. Ensure that you have set passwordless authentication as mentioned in the [1_passwordlessAuthentication](https://github.com/darkhorse1998/ansible/tree/main/1_passwordlessAuthentication).
 3. Run `ansible-playbook -i <inventory> <ansible-playbook>` \
 Example: `ansible-playbook -i inventory.ini apache-playbook.yaml`
 4. Once the playbook is exectured successfully, you can shell into the VM and confirm the installation & configuration by running the following:
