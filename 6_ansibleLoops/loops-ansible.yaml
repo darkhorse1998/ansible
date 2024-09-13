@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: true
+  ignore_errors: true
+  tasks:
+    - name: Update & Upgrade
+      ansible.builtin.shell: |
+        sudo apt install -y && sudo apt upgrade -y
+    - name: Install Multiple Packages with Loops
+      ansible.builtin.apt:
+        name: "{{ item.package }}"
+        state: "{{ item.state }}"
+        update_cache: yes
+      loop: 
+        - { package: "apache2", state: "present" }
+        - { package: "curl", state: "present" }
+        - { package: "nginx", state: "absent" }
