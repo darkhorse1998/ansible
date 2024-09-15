@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+  ignore_errors: true
+  gather_facts: true
+  vars:
+    print_ansible_facts: true
+    check: true
+  tasks:
+    - name: Intentional Error # to check the whether ignore_errors ignore this to continue the playbook
+      ansible.builtin.command: non-existing-command
+    - name: Print All Gatherd Facts
+      ansible.builtin.debug:
+        var: ansible_facts
+      when: # using when conditions as lists will make it an AND logic
+        - print_ansible_facts
+        - check
+    - name: Stop VM if Debian
+      ansible.builtin.command: /sbin/shutdown -t now
+      when: 
+        - ansible_facts["os_family"] == "Debian"
+        - check
