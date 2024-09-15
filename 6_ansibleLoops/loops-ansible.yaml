@@ -13,5 +13,5 @@
         update_cache: yes
       loop: 
         - { package: "apache2", state: "present" }
-        - { package: "curl", state: "present" }
-        - { package: "nginx", state: "absent" }
+        - { package: "curl", state: "absent" }
+        - { package: "nginx", state: "present" }
