@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    print_ansible_facts: false
+    check: true
+    update_upgrade: false
+    debug_output: true
+  tasks:
+    - name: Update & Upgrade
+      ansible.builtin.shell: |
+        sudo apt install -y && sudo apt upgrade -y
+      when: update_upgrade
+    - name: Check if Docker is Installed
+      ansible.builtin.command: docker --version
+      register: output
+      ignore_errors: true # to handle failures in case docker is not present
+    - ansible.builtin.debug:
+        var: output
+      when: debug_output
+    - name: Install Docker
+      ansible.builtin.apt:
+        name: docker.io
+        state: present
+      when: output.failed
+    - name: Customized ignoring of errors
+      ansible.builtin.command: ls /path-does-not-exist
+      register: output
+      failed_when:
+        - '"No such" not in output.stdout'
