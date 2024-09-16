@@ -30,6 +30,11 @@
       register: output
       failed_when: >
         ((error_message_1 in output.stdout) or (error_message_1 in output.stderr)) and 1 == 1
+    # - ansible.builtin.command: rm /doc.html
+    # - name: Customized Failing Conditions
+    #   ansible.builtin.command: ls /doc.html
+    #   register: output
+    #   failed_when: output.rc == 0 or "No such" not in output.stderr
     - ansible.builtin.debug:
         var: output
     - name: Test Task
