@@ -7,6 +7,7 @@
     check: true
     update_upgrade: false
     debug_output: true
+    error_message_1: "No such file or directory"
   tasks:
     - name: Update & Upgrade
       ansible.builtin.shell: |
@@ -24,8 +25,12 @@
         name: docker.io
         state: present
       when: output.failed
-    - name: Customized ignoring of errors
-      ansible.builtin.command: ls /path-does-not-exist
+    - name: Customized Failing Conditions
+      ansible.builtin.command: ls /doc.html
       register: output
-      failed_when:
-        - '"No such" not in output.stdout'
+      failed_when: >
+        ((error_message_1 in output.stdout) or (error_message_1 in output.stderr)) and 1 == 1
+    - ansible.builtin.debug:
+        var: output
+    - name: Test Task
+      ansible.builtin.shell: echo "Testing Error Handling"
