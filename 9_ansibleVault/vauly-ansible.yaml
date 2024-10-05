@@ -1,0 +1,10 @@
+---
+- hosts: local
+  connection: locals
+  become: true
+  gather_facts: true
+  vars:
+    vars: {{ vault_key }}
+  tasks:
+    - ansible.builtin.debug:
+        var: vault_key
