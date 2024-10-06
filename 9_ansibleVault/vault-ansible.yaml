@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: locals
+  gather_facts: true
+  # vars:
+  #   vault_key: {{ vault_key }}
+  tasks:
+    - ansible.builtin.command: echo "{{ vault_key }}"
+      register: output
+    - ansible.builtin.debug:
+        var: output
